@@ -227,7 +227,10 @@ def force_devmapper_symlinks():
 
 def reload():
     """ Request multipath to force reload devmaps. """
-    util.subp(['multipath', '-r'])
+    try:
+        util.subp(['multipath', '-r'])
+    except Exception:
+        pass
 
 
 def multipath_supported():
